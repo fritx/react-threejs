@@ -16,7 +16,8 @@ module.exports = {
     filename: '[name]',
   },
 
-  devtool: 'eval',
+  // https://webpack.github.io/docs/configuration.html#devtool
+  devtool: 'cheap-module-eval-source-map',
 
   module: {
     preLoaders: [

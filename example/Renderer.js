@@ -1,32 +1,32 @@
-
-import React, { Component } from 'react'
+/* global __r3js */
+import React, { Component, PropTypes } from 'react'
 import THREE from 'three.js'
-import Scene from './Scene'
 
 
 export default class Renderer extends Component {
 
+  static propTypes = {
+    // https://github.com/reactjs/react-tabs/blob/master/lib%2Fhelpers%2FchildrenPropType.js
+    children: PropTypes.array,
+  };
+
   constructor () {
     console.log('Renderer construct')
     super()
+    window.__r3js = {} // 要求单例
 
-    window.scene = this.scene = new THREE.Scene()
-    const camera = this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
     const renderer = this.renderer = new THREE.WebGLRenderer()
-
-    camera.position.z = 5
     renderer.setSize(window.innerWidth, window.innerHeight)
   }
 
   componentDidMount () {
-    console.log('Renderer mount')
-    const { scene, camera, renderer } = this
-
-    document.body.appendChild(renderer.domElement) // fixme
+    console.log('Renderer didMount')
+    document.body.appendChild(this.renderer.domElement) // fixme
 
     const animate = () => {
       requestAnimationFrame(animate)
-      renderer.render(scene, camera)
+      const { camera, scene } = __r3js
+      this.renderer.render(scene, camera)
     }
     animate()
   }
@@ -34,7 +34,7 @@ export default class Renderer extends Component {
   render () {
     console.log('Renderer render')
     return (<div>
-      <Scene />
+      {this.props.children}
     </div>)
   }
 }

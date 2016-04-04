@@ -1,3 +1,4 @@
+/* global __r3js */
 import React, { Component, PropTypes } from 'react'
 import THREE from 'three.js'
 
@@ -5,34 +6,34 @@ import THREE from 'three.js'
 export default class Mesh extends Component {
 
   static propTypes = {
+    position: PropTypes.object,
     rotation: PropTypes.object,
   };
 
   constructor () {
     console.log('mesh construct')
     super()
-  }
-
-  componentDidMount () {
-    console.log('mesh mount')
 
     const geometry = new THREE.BoxGeometry(1, 1, 1)
     const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
-    const cube = this.cube = new THREE.Mesh(geometry, material)
+    this.cube = new THREE.Mesh(geometry, material)
+  }
 
-    window.scene.add(cube)
+  componentDidMount () {
+    console.log('mesh didMount')
+    __r3js.scene.add(this.cube)
   }
 
   componentWillUnmount () {
-    console.log('mesh unmount')
+    console.log('mesh willUnmount')
+    __r3js.scene.remove(this.cube)
   }
 
   componentDidUpdate () {
-    console.log('mesh update')
-    const { cube } = this
-    const { rotation } = this.props
-    cube.rotation.x = rotation.x
-    cube.rotation.y = rotation.y
+    console.log('mesh didUpdate')
+    const { position, rotation } = this.props
+    Object.assign(this.cube.position, position)
+    Object.assign(this.cube.rotation, rotation)
   }
 
   render () {
