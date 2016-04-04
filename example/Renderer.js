@@ -1,19 +1,15 @@
 /* global __r3js */
-import React, { Component, PropTypes } from 'react'
-import THREE from 'three.js'
+import THREE from 'three'
+import Base from './Base'
 
 
-export default class Renderer extends Component {
+export default class Renderer extends Base {
 
-  static propTypes = {
-    // https://github.com/reactjs/react-tabs/blob/master/lib%2Fhelpers%2FchildrenPropType.js
-    children: PropTypes.array,
-  };
-
-  constructor () {
+  constructor (...args) {
     console.log('Renderer construct')
-    super()
-    window.__r3js = {} // 要求单例
+    super(...args)
+    this.animate = this.animate.bind(this)
+    window.__r3js = {} // singleton
 
     const renderer = this.renderer = new THREE.WebGLRenderer()
     renderer.setSize(window.innerWidth, window.innerHeight)
@@ -22,19 +18,17 @@ export default class Renderer extends Component {
   componentDidMount () {
     console.log('Renderer didMount')
     document.body.appendChild(this.renderer.domElement) // fixme
-
-    const animate = () => {
-      requestAnimationFrame(animate)
-      const { camera, scene } = __r3js
-      this.renderer.render(scene, camera)
-    }
-    animate()
+    this.animate()
   }
 
-  render () {
-    console.log('Renderer render')
-    return (<div>
-      {this.props.children}
-    </div>)
+  componentWillUnmount () {
+    // temperately not considering Renderer being unmounted
+    // it is singleton & dominating
+  }
+
+  // rendering scene with camera
+  animate () {
+    requestAnimationFrame(this.animate)
+    this.renderer.render(__r3js.scene, __r3js.camera)
   }
 }

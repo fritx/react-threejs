@@ -25,6 +25,6 @@
   "peerDependencies": {
     "react": "^0.14.8",
     "react-dom": "^0.14.8",
-    "three.js": "^0.73.2"
+    "three": "^0.75.0"
   }
 }

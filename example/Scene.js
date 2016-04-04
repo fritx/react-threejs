@@ -1,20 +1,23 @@
 /* global __r3js */
-import React, { Component } from 'react'
-import THREE from 'three.js'
-import Mesh from './Mesh'
+import { PropTypes } from 'react'
+import THREE from 'three'
+import Base from './Base'
 
 
-export default class Scene extends Component {
+export default class Scene extends Base {
 
-  constructor () {
+  static propTypes = {
+    children: PropTypes.oneOfType([
+      PropTypes.array,
+      PropTypes.object,
+      PropTypes.bool,
+    ]),
+  };
+
+  constructor (...args) {
     console.log('Scene construct')
-    super()
+    super(...args)
     this.scene = new THREE.Scene()
-
-    this.state = {
-      position: { x: 0, y: 0 },
-      rotation: { x: 0, y: 0 },
-    }
   }
 
   componentWillMount () {
@@ -24,38 +27,5 @@ export default class Scene extends Component {
 
   componentDidMount () {
     console.log('Scene didMount')
-
-    const animate = () => {
-      requestAnimationFrame(animate)
-      const { rotation } = this.state
-      this.setState({
-        rotation: {
-          x: rotation.x + 0.1,
-          y: rotation.y + 0.1,
-        },
-      })
-    }
-    animate()
-
-    window.addEventListener('keydown', (e) => {
-      const { position } = this.state
-      if (e.keyCode === 37) {
-        this.setState({
-          position: { x: position.x - 0.1, y: position.y },
-        })
-      } else if (e.keyCode === 39) {
-        this.setState({
-          position: { x: position.x + 0.1, y: position.y },
-        })
-      }
-    })
-  }
-
-  render () {
-    // console.log('Scene render')
-    const { position, rotation } = this.state
-    return (<div>
-      {rotation.x > 100 || <Mesh position={position} rotation={rotation} />}
-    </div>)
   }
 }

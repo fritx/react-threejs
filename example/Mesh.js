@@ -1,42 +1,37 @@
 /* global __r3js */
-import React, { Component, PropTypes } from 'react'
-import THREE from 'three.js'
+import { PropTypes } from 'react'
+import THREE from 'three'
+import Object3D from './Object3D'
 
 
-export default class Mesh extends Component {
+export default class Mesh extends Object3D {
 
   static propTypes = {
+    ...Object3D.propTypes,
     position: PropTypes.object,
     rotation: PropTypes.object,
   };
 
-  constructor () {
-    console.log('mesh construct')
-    super()
-
-    const geometry = new THREE.BoxGeometry(1, 1, 1)
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
-    this.cube = new THREE.Mesh(geometry, material)
+  constructor (...args) {
+    console.log('Mesh construct')
+    super(...args)
+    this.mesh = new THREE.Mesh() // placeholder
   }
 
   componentDidMount () {
-    console.log('mesh didMount')
-    __r3js.scene.add(this.cube)
+    console.log('Mesh didMount')
+    __r3js.scene.add(this.mesh)
   }
 
   componentWillUnmount () {
-    console.log('mesh willUnmount')
-    __r3js.scene.remove(this.cube)
+    console.log('Mesh willUnmount')
+    __r3js.scene.remove(this.mesh)
   }
 
   componentDidUpdate () {
-    console.log('mesh didUpdate')
+    // console.log('Mesh didUpdate')
     const { position, rotation } = this.props
-    Object.assign(this.cube.position, position)
-    Object.assign(this.cube.rotation, rotation)
-  }
-
-  render () {
-    return <div></div>
+    Object.assign(this.mesh.position, position)
+    Object.assign(this.mesh.rotation, rotation)
   }
 }

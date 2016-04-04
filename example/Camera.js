@@ -1,18 +1,17 @@
 /* global __r3js */
-import React, { Component, PropTypes } from 'react'
-import THREE from 'three.js'
+import THREE from 'three'
+import Object3D from './Object3D'
 
 
-export default class Camera extends Component {
+export default class Camera extends Object3D {
 
-  static propTypes = {
-    position: PropTypes.object,
-    rotation: PropTypes.object,
-  };
+  // static propTypes = {
+  //   ...Object3D.propTypes,
+  // };
 
-  constructor () {
+  constructor (props, context) {
     console.log('Camera construct')
-    super()
+    super(props, context)
 
     this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
   }
@@ -20,16 +19,5 @@ export default class Camera extends Component {
   componentWillMount () {
     console.log('Camera willMount')
     __r3js.camera = this.camera
-  }
-
-  componentDidUpdate () {
-    console.log('Camera didUpdate')
-    const { position, rotation } = this.props
-    Object.assign(this.camera.position, position)
-    Object.assign(this.camera.rotation, rotation)
-  }
-
-  render () {
-    return <div></div>
   }
 }

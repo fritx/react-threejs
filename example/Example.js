@@ -3,41 +3,50 @@ import React, { Component } from 'react'
 import Renderer from './Renderer'
 import Camera from './Camera'
 import Scene from './Scene'
+import MyCube from './MyCube'
 
 
 export default class Example extends Component {
 
-  constructor () {
+  constructor (...args) {
     console.log('Example construct')
-    super()
+    super(...args)
+    this.animate = this.animate.bind(this)
 
     this.state = {
-      cameraPosition: { z: 5 },
-      cameraRotation: { y: 0 },
+      cameraPosition: { x: 0, y: 0, z: 5 },
+      position: { x: 0, y: 0 },
+      rotation: { x: 0, y: 0 },
     }
   }
 
   componentDidMount () {
     console.log('Example didMount')
+    this.animate()
+  }
 
-    const animate = () => {
-      requestAnimationFrame(animate)
-      const { cameraPosition, cameraRotation } = this.state
-      this.setState({
-        cameraPosition: { z: cameraPosition.z + 0.05 },
-        cameraRotation: { y: cameraRotation.y + (Math.random() < 0.5 ? 0.005 : -0.005) },
-      })
-    }
-    animate()
+  // custom/example animation
+  // rotating the cube
+  animate () {
+    requestAnimationFrame(this.animate)
+    const { rotation } = this.state
+    this.setState({
+      rotation: {
+        x: rotation.x + 0.1,
+        y: rotation.y + 0.1,
+      },
+    })
   }
 
   render () {
-    console.log('Example render')
-    const { cameraPosition, cameraRotation } = this.state
+    // console.log('Example render')
+    const { cameraPosition, position, rotation } = this.state
     return (<div>
       <Renderer>
-        <Camera position={cameraPosition} rotation={cameraRotation} />
-        <Scene />
+        <Camera position={cameraPosition} />
+        <Scene>
+          <MyCube position={position} rotation={rotation} />
+        </Scene>
       </Renderer>
     </div>)
   }
