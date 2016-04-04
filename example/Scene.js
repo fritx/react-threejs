@@ -1,18 +1,9 @@
 /* global __r3js */
-import { PropTypes } from 'react'
 import THREE from 'three'
-import Base from './Base'
+import Object3D from './Object3D'
 
 
-export default class Scene extends Base {
-
-  static propTypes = {
-    children: PropTypes.oneOfType([
-      PropTypes.array,
-      PropTypes.object,
-      PropTypes.bool,
-    ]),
-  };
+export default class Scene extends Object3D {
 
   constructor (...args) {
     console.log('Scene construct')
