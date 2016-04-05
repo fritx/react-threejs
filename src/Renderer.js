@@ -1,23 +1,46 @@
-/* global __r3js */
+import React, { PropTypes } from 'react'
 import THREE from 'three'
 import Base from './Base'
 
 
 export default class Renderer extends Base {
 
-  constructor (...args) {
-    console.log('Renderer construct')
-    super(...args)
-    this.animate = this.animate.bind(this)
-    window.__r3js = {} // singleton
+  static childContextTypes = {
+    setCamera: PropTypes.func.isRequired,
+    setScene: PropTypes.func.isRequired,
+  };
 
-    const renderer = this.renderer = new THREE.WebGLRenderer()
-    renderer.setSize(window.innerWidth, window.innerHeight)
+  getChildContext () {
+    return {
+      setCamera: this.setCamera,
+      setScene: this.setScene,
+    }
+  }
+  setCamera (camera) {
+    this.camera = camera
+  }
+  setScene (scene) {
+    this.scene = scene
+  }
+
+  static propTypes = {
+    ...Base.propTypes,
+    size: PropTypes.object.isRequired,
+  };
+
+  constructor (props, ...rest) {
+    console.log('Renderer construct')
+    super(props, ...rest)
+    this.animate = this.animate.bind(this)
+    this.setCamera = this.setCamera.bind(this)
+    this.setScene = this.setScene.bind(this)
+
+    this.renderer = new THREE.WebGLRenderer()
+    this.renderer.setSize(props.size.width, props.size.height)
   }
 
   componentDidMount () {
-    console.log('Renderer didMount')
-    document.body.appendChild(this.renderer.domElement) // fixme
+    this.refs.container.appendChild(this.renderer.domElement) // fixme
     this.animate()
   }
 
@@ -29,6 +52,13 @@ export default class Renderer extends Base {
   // rendering scene with camera
   animate () {
     requestAnimationFrame(this.animate)
-    this.renderer.render(__r3js.scene, __r3js.camera)
+    this.renderer.render(this.scene, this.camera)
+  }
+
+  render () {
+    return (<div>
+      <div ref="container"></div>
+      <div hidden>{this.props.children}</div>
+    </div>)
   }
 }

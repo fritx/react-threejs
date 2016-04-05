@@ -12,6 +12,10 @@ export default class Example extends Component {
     this.animate = this.animate.bind(this)
 
     this.state = {
+      rendererSize: {
+        width: window.innerWidth,
+        height: window.innerHeight,
+      },
       cameraPosition: { x: 0, y: 0, z: 5 },
       position: { x: 0, y: 0 },
       rotation: { x: 0, y: 0 },
@@ -38,9 +42,9 @@ export default class Example extends Component {
 
   render () {
     // console.log('Example render')
-    const { cameraPosition, position, rotation } = this.state
+    const { rendererSize, cameraPosition, position, rotation } = this.state
     return (<div>
-      <Renderer>
+      <Renderer size={rendererSize}>
         <Camera position={cameraPosition} />
         <Scene>
           <MyCube position={position} rotation={rotation} />

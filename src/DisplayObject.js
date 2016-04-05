@@ -1,4 +1,4 @@
-/* global __r3js */
+import { PropTypes } from 'react'
 import Object3D from './Object3D'
 
 
@@ -6,11 +6,15 @@ import Object3D from './Object3D'
 // objects that display in (being added/removed to) the scene
 export default class DisplayObject extends Object3D {
 
+  static contextTypes = {
+    scene: PropTypes.object,
+  };
+
   componentDidMount () {
-    __r3js.scene.add(this.obj)
+    this.context.scene.add(this.obj)
   }
 
   componentWillUnmount () {
-    __r3js.scene.remove(this.obj)
+    this.context.scene.remove(this.obj)
   }
 }

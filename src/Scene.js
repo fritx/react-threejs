@@ -1,22 +1,28 @@
-/* global __r3js */
+import { PropTypes } from 'react'
 import THREE from 'three'
 import Object3D from './Object3D'
 
 
 export default class Scene extends Object3D {
 
+  static contextTypes = {
+    setScene: PropTypes.func.isRequired,
+  };
+
+  static childContextTypes = {
+    scene: PropTypes.object,
+  };
+
+  getChildContext () {
+    return {
+      scene: this.scene,
+    }
+  }
+
   constructor (...args) {
     console.log('Scene construct')
     super(...args)
     this.scene = new THREE.Scene()
-  }
-
-  componentWillMount () {
-    console.log('Scene willMount')
-    __r3js.scene = this.scene
-  }
-
-  componentDidMount () {
-    console.log('Scene didMount')
+    this.context.setScene(this.scene)
   }
 }
