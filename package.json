@@ -24,6 +24,7 @@
   },
   "peerDependencies": {
     "react": "^0.14.8",
+    "react-addons-pure-render-mixin": "^0.14.8",
     "react-dom": "^0.14.8",
     "three": "^0.75.0"
   }

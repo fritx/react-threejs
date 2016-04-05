@@ -1,5 +1,5 @@
 import THREE from 'three'
-import Mesh from './Mesh'
+import { Mesh } from '../src'
 
 
 export default class MyCube extends Mesh {

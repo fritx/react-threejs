@@ -1,8 +1,6 @@
 
 import React, { Component } from 'react'
-import Renderer from './Renderer'
-import Camera from './Camera'
-import Scene from './Scene'
+import { Renderer, Camera, Scene } from '../src'
 import MyCube from './MyCube'
 
 
