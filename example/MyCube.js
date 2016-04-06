@@ -1,24 +1,34 @@
-import { PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 import THREE from 'three'
-import { Mesh } from '../src'
+import { Base, Mesh } from '../src'
 
 
-export default class MyCube extends Mesh {
+export default class MyCube extends Base {
 
   static propTypes = {
+    position: PropTypes.object,
+    rotation: PropTypes.object,
     color: PropTypes.number.isRequired,
   };
 
-  constructor (props, ...rest) {
+  constructor (props, context) {
     console.log('MyCube construct')
+    super(props, context)
 
     // extend custom geometry & material
-    props = {
-      ...props,
-      geometry: new THREE.BoxGeometry(1, 1, 1),
-      material: new THREE.MeshBasicMaterial({ color: props.color }),
-    }
+    this.geometry = new THREE.BoxGeometry(1, 1, 1)
+    this.material = new THREE.MeshBasicMaterial({ color: props.color })
+  }
 
-    super(props, ...rest)
+  render () {
+    const meshProps = {
+      position: this.props.position,
+      rotation: this.props.rotation,
+      geometry: this.geometry,
+      material: this.material,
+    }
+    return (<div>
+      <Mesh {...meshProps}>{this.props.children}</Mesh>
+    </div>)
   }
 }
