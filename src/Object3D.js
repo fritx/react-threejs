@@ -6,6 +6,20 @@ import Base from './Base'
 // https://github.com/mrdoob/three.js/blob/master/src/core/Object3D.js
 export default class Object3D extends Base {
 
+  static contextTypes = {
+    parent: PropTypes.object,
+  };
+
+  static childContextTypes = {
+    parent: PropTypes.object,
+  };
+
+  getChildContext () {
+    return {
+      parent: this.obj,
+    }
+  }
+
   static propTypes = {
     ...Base.propTypes,
     position: PropTypes.object,
@@ -13,18 +27,21 @@ export default class Object3D extends Base {
   };
 
   constructor (...args) {
-    console.log('Object3D construct')
     super(...args)
     this.obj = new THREE.Object3D() // placeholder
   }
 
   componentDidMount () {
-    console.log('Object3D didMount')
     this.update()
+    if (this.context.parent) this.context.parent.add(this.obj)
   }
 
   componentDidUpdate () {
     this.update()
+  }
+
+  componentWillUnmount () {
+    if (this.context.parent) this.context.parent.remove(this.obj)
   }
 
   // updating position & rotation

@@ -24,7 +24,6 @@ export default class Renderer extends Base {
   }
 
   static propTypes = {
-    ...Base.propTypes,
     size: PropTypes.object.isRequired,
   };
 

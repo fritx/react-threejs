@@ -12,9 +12,7 @@ export default class Camera extends Object3D {
   constructor (...args) {
     console.log('Camera construct')
     super(...args)
-
-    this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-    this.context.setCamera(this.camera)
-    this.obj = this.camera
+    this.obj = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+    this.context.setCamera(this.obj)
   }
 }

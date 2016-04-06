@@ -47,7 +47,10 @@ export default class Example extends Component {
       <Renderer size={rendererSize}>
         <Camera position={cameraPosition} />
         <Scene>
-          <MyCube position={position} rotation={rotation} />
+          <MyCube color={0x00ff00} position={position} rotation={rotation}>
+            <MyCube color={0xff0000} position={{ y: 2 }} />
+            <MyCube color={0x0000ff} position={{ z: 3 }} />
+          </MyCube>
         </Scene>
       </Renderer>
     </div>)

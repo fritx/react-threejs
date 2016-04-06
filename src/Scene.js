@@ -9,20 +9,10 @@ export default class Scene extends Object3D {
     setScene: PropTypes.func.isRequired,
   };
 
-  static childContextTypes = {
-    scene: PropTypes.object,
-  };
-
-  getChildContext () {
-    return {
-      scene: this.scene,
-    }
-  }
-
   constructor (...args) {
     console.log('Scene construct')
     super(...args)
-    this.scene = new THREE.Scene()
-    this.context.setScene(this.scene)
+    this.obj = new THREE.Scene()
+    this.context.setScene(this.obj)
   }
 }
