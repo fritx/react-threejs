@@ -8,12 +8,14 @@ export default class Renderer extends Base {
   static childContextTypes = {
     setCamera: PropTypes.func.isRequired,
     setScene: PropTypes.func.isRequired,
+    getSize: PropTypes.func.isRequired,
   };
 
   getChildContext () {
     return {
       setCamera: this.setCamera,
       setScene: this.setScene,
+      getSize: ::this.obj.getSize,
     }
   }
   setCamera (camera) {
@@ -25,6 +27,7 @@ export default class Renderer extends Base {
 
   static propTypes = {
     size: PropTypes.object.isRequired,
+    obj: PropTypes.object,
   };
 
   constructor (props, ...rest) {
@@ -34,12 +37,12 @@ export default class Renderer extends Base {
     this.setCamera = this.setCamera.bind(this)
     this.setScene = this.setScene.bind(this)
 
-    this.renderer = new THREE.WebGLRenderer()
-    this.renderer.setSize(props.size.width, props.size.height)
+    this.obj = props.obj || new THREE.WebGLRenderer()
+    this.obj.setSize(props.size.width, props.size.height)
   }
 
   componentDidMount () {
-    this.refs.container.appendChild(this.renderer.domElement) // fixme
+    this.refs.container.appendChild(this.obj.domElement) // fixme
     this.animate()
   }
 
@@ -51,7 +54,7 @@ export default class Renderer extends Base {
   // rendering scene with camera
   animate () {
     requestAnimationFrame(this.animate)
-    this.renderer.render(this.scene, this.camera)
+    this.obj.render(this.scene, this.camera)
   }
 
   render () {

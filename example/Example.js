@@ -4,6 +4,8 @@ import { Renderer, Camera, Scene } from '../src'
 import MyCube from './MyCube'
 
 
+// extened threejs cube-rotating example
+// http://threejs.org/docs/index.html#Manual/Introduction/Creating_a_scene
 export default class Example extends Component {
 
   constructor (...args) {
@@ -11,12 +13,12 @@ export default class Example extends Component {
     super(...args)
     this.animate = this.animate.bind(this)
 
+    this.rendererSize = {
+      width: window.innerWidth,
+      height: window.innerHeight,
+    }
+
     this.state = {
-      rendererSize: {
-        width: window.innerWidth,
-        height: window.innerHeight,
-      },
-      cameraPosition: { x: 0, y: 0, z: 5 },
       position: { x: 0, y: 0 },
       rotation: { x: 0, y: 0 },
     }
@@ -42,10 +44,11 @@ export default class Example extends Component {
 
   render () {
     // console.log('Example render')
-    const { rendererSize, cameraPosition, position, rotation } = this.state
+    const { rendererSize } = this
+    const { position, rotation } = this.state
     return (<div>
       <Renderer size={rendererSize}>
-        <Camera position={cameraPosition} />
+        <Camera position={{ z: 5 }} />
         <Scene>
           <MyCube color={0x00ff00} position={position} rotation={rotation}>
             <MyCube color={0xff0000} position={{ y: 2 }} />
