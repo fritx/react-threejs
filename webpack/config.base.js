@@ -11,6 +11,7 @@ module.exports = {
     ],
     loaders: [
       { test: /\.jsx?$/, exclude: /nodde_modules/, loader: 'babel' },
+      { test: /\.(png|gif|jpe?g)$/, exclude: /nodde_modules/, loader: 'url' },
     ],
   },
 
