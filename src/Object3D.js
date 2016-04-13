@@ -47,7 +47,7 @@ export default class Object3D extends Base {
   // updating position & rotation
   update () {
     const { position, rotation } = this.props
-    Object.assign(this.obj.position, position)
-    Object.assign(this.obj.rotation, rotation)
+    if (position) Object.assign(this.obj.position, position)
+    if (rotation) Object.assign(this.obj.rotation, rotation)
   }
 }

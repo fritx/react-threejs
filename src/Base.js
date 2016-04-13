@@ -17,7 +17,7 @@ export default class Base extends Component {
   constructor (...args) {
     super(...args)
     // http://facebook.github.io/react/docs/pure-render-mixin.html
-    this.shouldComponentUpdate = shouldComponentUpdate.bind(this)
+    this.shouldComponentUpdate = this::shouldComponentUpdate
   }
 
   render () {

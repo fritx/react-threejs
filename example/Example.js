@@ -20,7 +20,6 @@ export default class Example extends Component {
     }
 
     this.state = {
-      position: { x: 0, y: 0 },
       rotation: { x: 0, y: 0 },
     }
   }
@@ -46,17 +45,15 @@ export default class Example extends Component {
   render () {
     // console.log('Example render')
     const { rendererSize } = this
-    const { position, rotation } = this.state
-    return (<div>
-      <Renderer size={rendererSize}>
-        <Camera position={{ z: 5 }} />
-        <Scene>
-          <MyCube color={0x00ff00} position={position} rotation={rotation}>
-            <MyCube color={0xff0000} position={{ y: 2 }} />
-            <MyCube color={0x0000ff} position={{ z: 3 }} />
-          </MyCube>
-        </Scene>
-      </Renderer>
-    </div>)
+    const { rotation } = this.state
+    return (<Renderer size={rendererSize}>
+      <Camera position={{ z: 15 }} />
+      <Scene>
+        <MyCube color={0x00ff00} rotation={rotation}>
+          <MyCube color={0xff0000} position={{ y: 2 }} />
+          <MyCube color={0x0000ff} position={{ z: 3 }} />
+        </MyCube>
+      </Scene>
+    </Renderer>)
   }
 }

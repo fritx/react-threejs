@@ -13,8 +13,8 @@ export default class Renderer extends Base {
 
   getChildContext () {
     return {
-      setCamera: this.setCamera,
-      setScene: this.setScene,
+      setCamera: ::this.setCamera,
+      setScene: ::this.setScene,
       getSize: ::this.obj.getSize,
     }
   }
@@ -31,12 +31,8 @@ export default class Renderer extends Base {
   };
 
   constructor (props, ...rest) {
-    console.log('Renderer construct')
     super(props, ...rest)
-    this.animate = this.animate.bind(this)
-    this.setCamera = this.setCamera.bind(this)
-    this.setScene = this.setScene.bind(this)
-
+    this.animate = ::this.animate
     this.obj = props.obj || new THREE.WebGLRenderer()
     this.obj.setSize(props.size.width, props.size.height)
   }
