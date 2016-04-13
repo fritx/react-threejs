@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "main": "dist",
   "scripts": {
-    "dev": "webpack -w --progress"
+    "dev:example": "webpack -w --progress --config webpack/config.example",
+    "dev:prod": "webpack -w --progress --config webpack/config.prod"
   },
   "devDependencies": {
     "babel-core": "^6.7.4",

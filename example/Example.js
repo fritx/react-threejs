@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react'
+// import { Renderer, Camera, Scene } from '../dist'
 import { Renderer, Camera, Scene } from '../src'
 import MyCube from './MyCube'
 
@@ -11,7 +12,7 @@ export default class Example extends Component {
   constructor (...args) {
     console.log('Example construct')
     super(...args)
-    this.animate = this.animate.bind(this)
+    this.animate = ::this.animate
 
     this.rendererSize = {
       width: window.innerWidth,

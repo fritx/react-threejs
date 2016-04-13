@@ -20,12 +20,14 @@
     "space-infix-ops": 1,
     "space-in-parens": 1,
     "space-before-function-paren": 1,
+    "padded-blocks": 1,
     "no-console": 0,
     "no-unused-vars": 1,
     "no-floating-decimal": 1,
     "no-multiple-empty-lines": [1, { max: 2 }],
-    "jsx-quotes": 1,
+    "jsx-quotes": 0,
     "react/prop-types": 1,
+    "react/self-closing-comp": 1,
     'react/jsx-uses-react': 2,
     'react/jsx-uses-vars': 2
   }
