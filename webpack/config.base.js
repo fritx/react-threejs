@@ -1,17 +1,20 @@
 'use strict'
 const webpack = require('webpack')
 const WebpackNotifierPlugin = require('webpack-notifier')
+const resolve = require('path').resolve
+const srcDir = resolve(__dirname, '../src')
+const exampleDir = resolve(__dirname, '../example')
 
 
 module.exports = {
 
   module: {
     preLoaders: [
-      { test: /\.jsx?$/, exclude: /\/dist\/|nodde_modules/, loader: 'eslint' },
+      { test: /\.jsx?$/, include: [srcDir, exampleDir], loader: 'eslint' },
     ],
     loaders: [
-      { test: /\.jsx?$/, exclude: /nodde_modules/, loader: 'babel' },
-      { test: /\.(png|gif|jpe?g)$/, exclude: /nodde_modules/, loader: 'url' },
+      { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel' },
+      { test: /\.(png|gif|jpe?g)$/, exclude: /node_modules/, loader: 'url' },
     ],
   },
 

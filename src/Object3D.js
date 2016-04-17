@@ -14,6 +14,11 @@ export default class Object3D extends Base {
     parent: PropTypes.object,
   };
 
+  // fixme: +props.obj
+  // static propTypes = {
+  //   obj: PropTypes.object,
+  // };
+
   getChildContext () {
     return {
       parent: this.obj,

@@ -8,10 +8,11 @@ export default class Mesh extends Object3D {
   static propTypes = {
     geometry: PropTypes.object,
     material: PropTypes.object,
+    obj: PropTypes.object,
   };
 
   constructor (props, ...rest) {
     super(props, ...rest)
-    this.obj = new THREE.Mesh(props.geometry, props.material) // placeholder
+    this.obj = props.obj || new THREE.Mesh(props.geometry, props.material)
   }
 }

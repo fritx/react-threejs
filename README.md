@@ -23,13 +23,5 @@ render () {
 ```
 
 
-```plain
-$ cd react-threejs
-$ npm install
-$ npm run dev &
-$ python -m SimpleHTTPServer 8087
-```
-
-
 [react]: https://github.com/facebook/react
 [threejs]: https://github.com/mrdoob/three.js

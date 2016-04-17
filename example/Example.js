@@ -6,8 +6,8 @@ import ExMyCube from './ExMyCube'
 import ExGeometryCube from './ExGeometryCube'
 
 
-// extened threejs cube-rotating example
-// http://threejs.org/docs/index.html#Manual/Introduction/Creating_a_scene
+// todo: THREE.FirstPersonControls
+// https://github.com/mrdoob/three.js/blob/master/examples/webgl_geometry_dynamic.html
 export default class Example extends Component {
 
   constructor (...args) {

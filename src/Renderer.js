@@ -33,7 +33,9 @@ export default class Renderer extends Base {
   constructor (props, ...rest) {
     super(props, ...rest)
     this.animate = ::this.animate
-    this.obj = props.obj || new THREE.WebGLRenderer()
+    this.obj = props.obj || new THREE.WebGLRenderer({
+      antialias: true,
+    })
     this.obj.setSize(props.size.width, props.size.height)
   }
 
