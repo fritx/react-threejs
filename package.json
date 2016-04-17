@@ -1,12 +1,13 @@
 {
   "name": "react-threejs",
   "version": "0.0.1",
-  "main": "dist",
+  "main": "lib",
   "scripts": {
-    "dev:example": "webpack -w --progress --config webpack/config.example",
-    "dev:prod": "webpack -w --progress --config webpack/config.prod"
+    "dev": "webpack -w --progress --config webpack/config.example",
+    "build": "babel src -d lib"
   },
   "devDependencies": {
+    "babel-cli": "^6.7.5",
     "babel-core": "^6.7.4",
     "babel-eslint": "^6.0.2",
     "babel-loader": "^6.2.4",

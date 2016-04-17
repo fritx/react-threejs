@@ -8,7 +8,7 @@ const config = module.exports = Object.assign({}, base)
 config.devtool = 'cheap-module-eval-source-map',
 
 config.entry = {
-  'dist/example.js': './example/index.js',
+  'example/dist.js': './example/index.js',
 }
 
 config.output = {
