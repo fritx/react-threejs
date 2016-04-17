@@ -39,7 +39,7 @@ export default class ExMyCube extends Object3D {
     const { rotation } = this.state
     return (<MyCube color={0x00ff00} rotation={rotation}>
       <MyCube color={0xff0000} position={{ y: 2 }} />
-      <MyCube color={0x0000ff} position={{ z: 3 }} />
+      <MyCube color={0xffff00} position={{ z: 3 }} />
     </MyCube>)
   }
 }

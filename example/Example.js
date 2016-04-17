@@ -4,6 +4,8 @@ import React, { Component } from 'react'
 import { Renderer, Camera, Scene } from '../src'
 import ExMyCube from './ExMyCube'
 import ExGeometryCube from './ExGeometryCube'
+import ExGeometryDynamic from './ExGeometryDynamic'
+import ExMorphtargetsHorse from './ExMorphtargetsHorse'
 
 
 // todo: THREE.FirstPersonControls
@@ -24,8 +26,10 @@ export default class Example extends Component {
     return (<Renderer size={this.rendererSize}>
       <Camera position={{ z: 15 }} />
       <Scene>
-        <ExMyCube />
-        <ExGeometryCube position={{ x: 8 }} />
+        <ExMyCube position={{ y: -5 }} />
+        <ExGeometryCube position={{ x: 7, y: 4 }} />
+        <ExMorphtargetsHorse position={{ x: -7, y: 2 }} />
+        <ExGeometryDynamic position={{ y: -200 }} />
       </Scene>
     </Renderer>)
   }
