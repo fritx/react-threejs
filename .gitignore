@@ -1,3 +1,4 @@
 node_modules
-dist
+lib
+example/dist.js
 *.log

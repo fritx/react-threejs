@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-// import { Renderer, Camera, Scene } from '../dist'
+// import { Renderer, Camera, Scene } from '../lib'
 import { Renderer, Camera, Scene } from '../src'
 import ExMyCube from './ExMyCube'
 import ExGeometryCube from './ExGeometryCube'
