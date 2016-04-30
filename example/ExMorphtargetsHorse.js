@@ -21,12 +21,17 @@ export default class ExMorphtargetsHorse extends Object3D {
 
   componentWillMount () {
     new THREE.JSONLoader().load('./horse.js', (geometry) => {
-      // const material = new THREE.MeshLambertMaterial({
-      const material = new THREE.MeshNormalMaterial({
-        // vertexColors: THREE.FaceColors,
+      // const material = new THREE.MeshNormalMaterial({
+      //   vertexColors: THREE.FaceColors,
+      //   morphTargets: true,
+      //   overdraw: 0.5,
+      // })
+      const material = new THREE.MeshLambertMaterial( {
+        vertexColors: THREE.FaceColors,
         morphTargets: true,
-        // overdraw: 0.5,
-      })
+        overdraw: 0.5,
+      });
+
       const mesh = new THREE.Mesh(geometry, material)
       mesh.scale.set( 0.2, 0.2, 0.2 )
 
