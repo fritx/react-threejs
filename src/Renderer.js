@@ -9,6 +9,7 @@ export default class Renderer extends Base {
     setCamera: PropTypes.func.isRequired,
     setScene: PropTypes.func.isRequired,
     getSize: PropTypes.func.isRequired,
+    domElement: PropTypes.object.isRequired,
   };
 
   getChildContext () {
@@ -16,6 +17,7 @@ export default class Renderer extends Base {
       setCamera: ::this.setCamera,
       setScene: ::this.setScene,
       getSize: ::this.obj.getSize,
+      domElement: this.obj.domElement,
     }
   }
   setCamera (camera) {
