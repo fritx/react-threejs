@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import THREE from 'three'
 // import { Renderer, Camera, Scene } from '../lib'
-import { Renderer, Camera, Scene, Light } from '../src'
+import { Renderer, Camera, Scene, Light, FirstPersonControls } from '../src'
 import ExMyCube from './ExMyCube'
 import ExGeometryCube from './ExGeometryCube'
 import ExGeometryDynamic from './ExGeometryDynamic'
@@ -32,8 +32,10 @@ export default class Example extends Component {
 
   render () {
     return (<Renderer size={this.rendererSize}>
-      <Camera position={{ z: 15 }} />
       <Scene>
+        <FirstPersonControls position={{ z: 15 }}>
+          <Camera />
+        </FirstPersonControls>
         <Light obj={this.light1}/>
         <Light obj={this.light2}/>
         <ExMyCube position={{ y: -5 }} />

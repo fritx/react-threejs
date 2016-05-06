@@ -6,6 +6,7 @@ import Object3D from './Object3D'
 export default class Light extends Object3D {
 
   static propTypes = {
+    ...Object3D.propTypes,
     hex: PropTypes.number,
     obj: PropTypes.object,
   }
