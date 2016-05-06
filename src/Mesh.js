@@ -6,6 +6,7 @@ import Object3D from './Object3D'
 export default class Mesh extends Object3D {
 
   static propTypes = {
+    ...Object3D.propTypes,
     geometry: PropTypes.object,
     material: PropTypes.object,
     obj: PropTypes.object,

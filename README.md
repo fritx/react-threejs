@@ -2,6 +2,8 @@
 
 WIP: Simplest bindings between [React][react] & [Three.js][threejs]
 
+http://fritx.github.io/react-threejs/example/
+
 
 ```js
 import React, { Component } from 'react'

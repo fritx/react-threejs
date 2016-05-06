@@ -26,6 +26,7 @@ export default class Renderer extends Base {
   }
 
   static propTypes = {
+    ...Base.propTypes,
     size: PropTypes.object.isRequired,
     obj: PropTypes.object,
   };
@@ -37,6 +38,7 @@ export default class Renderer extends Base {
       antialias: true,
     })
     this.obj.setSize(props.size.width, props.size.height)
+    this.obj.setClearColor(0x000000)
   }
 
   componentDidMount () {

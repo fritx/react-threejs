@@ -6,6 +6,7 @@ import Object3D from './Object3D'
 export default class Camera extends Object3D {
 
   static contextTypes = {
+    ...Object3D.contextTypes, // fixme: other places
     setCamera: PropTypes.func.isRequired,
     getSize: PropTypes.func.isRequired,
   };
