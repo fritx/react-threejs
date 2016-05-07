@@ -14,7 +14,6 @@ export default class FirstPersonControls extends Object3D {
     super(...args)
     this.animate = ::this.animate
     this.frame = null
-    this.obj.name = 'FirstPersonControls'
   }
 
   // override

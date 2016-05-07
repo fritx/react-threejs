@@ -18,6 +18,7 @@ export default class Scene extends Object3D {
   constructor (props, context) {
     super(props, context)
     this.obj = props.obj || new THREE.Scene()
+    this.obj.name = this.obj.name || this.constructor.name
     context.setScene(this.obj)
 
 

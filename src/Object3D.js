@@ -34,6 +34,10 @@ export default class Object3D extends Base {
   constructor (...args) {
     super(...args)
     this.obj = new THREE.Object3D() // placeholder
+
+    // Component name as default Object name
+    // friendly to threejs-inspector
+    this.obj.name = this.constructor.name
   }
 
   componentDidMount () {

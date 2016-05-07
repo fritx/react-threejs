@@ -14,5 +14,6 @@ export default class Light extends Object3D {
   constructor (props, ...rest) {
     super(props, ...rest)
     this.obj = props.obj || new THREE.Light(props.hex)
+    this.obj.name = this.obj.name || this.constructor.name
   }
 }

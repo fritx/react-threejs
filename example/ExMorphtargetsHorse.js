@@ -33,6 +33,7 @@ export default class ExMorphtargetsHorse extends Object3D {
       });
 
       const mesh = new THREE.Mesh(geometry, material)
+      mesh.name = 'Horse'
       mesh.scale.set( 0.2, 0.2, 0.2 )
 
       const mixer = this.mixer = new THREE.AnimationMixer(mesh);

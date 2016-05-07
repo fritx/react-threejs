@@ -39,6 +39,7 @@ export default class Renderer extends Base {
     this.obj = props.obj || new THREE.WebGLRenderer({
       antialias: true,
     })
+    this.obj.name = this.obj.name || this.constructor.name
     this.obj.setSize(props.size.width, props.size.height)
     this.obj.setClearColor(0x000000)
   }

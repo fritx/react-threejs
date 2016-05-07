@@ -25,6 +25,7 @@ export default class ExGeometryDynamic extends Object3D {
     const material = new THREE.MeshBasicMaterial( { color: 0x0044ff, map: texture } );
 
     this.mesh = new THREE.Mesh( geometry, material );
+    this.mesh.name = 'Water'
   }
 
   componentDidMount (...args) {

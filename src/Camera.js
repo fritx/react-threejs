@@ -15,6 +15,7 @@ export default class Camera extends Object3D {
     super(props, context)
     const { width, height } = context.getSize()
     this.obj = props.obj || new THREE.PerspectiveCamera(75, width / height, 0.1, 1000)
+    this.obj.name = this.obj.name || this.constructor.name
     context.setCamera(this.obj)
   }
 }
