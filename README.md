@@ -4,6 +4,8 @@ WIP: Simplest bindings between [React][react] & [Three.js][threejs]
 
 http://fritx.github.io/react-threejs/example/
 
+<img width="400" src="debugging.jpg" />
+
 
 ```js
 import React, { Component } from 'react'
