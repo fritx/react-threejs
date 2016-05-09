@@ -1,6 +1,5 @@
 
 import React, { Component } from 'react'
-import THREE from 'three'
 // import { Renderer, Camera, Scene } from '../lib'
 import { Renderer, Camera, Scene, Light, FirstPersonControls } from '../src'
 import ExMyCube from './ExMyCube'
@@ -21,13 +20,6 @@ export default class Example extends Component {
       width: window.innerWidth,
       height: window.innerHeight,
     }
-
-    const light1 = new THREE.DirectionalLight( 0xefefff, 1.5 )
-    light1.position.set( 10, 10, 10 ).normalize();
-    this.light1 = light1
-    const light2 = new THREE.DirectionalLight( 0xffefef, 1.5 )
-    light2.position.set( -10, -10, -10 ).normalize();
-    this.light2 = light2
   }
 
   render () {
@@ -36,8 +28,8 @@ export default class Example extends Component {
         <FirstPersonControls position={{ z: 15 }}>
           <Camera />
         </FirstPersonControls>
-        <Light obj={this.light1}/>
-        <Light obj={this.light2}/>
+        <Light hex={0xefefff} intensity={1.5} position={{ x: 10, y: 10, z: 10 }}/>
+        <Light hex={0xffefef} intensity={1.5} position={{ x: -10, y: -10, z: -10 }}/>
         <ExMyCube position={{ y: -5 }} />
         <ExGeometryCube position={{ x: 7, y: 4 }} />
         <ExMorphtargetsHorse position={{ x: -7, y: 2 }} />
