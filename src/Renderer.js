@@ -10,6 +10,7 @@ export default class Renderer extends Base {
     setScene: PropTypes.func.isRequired,
     getSize: PropTypes.func.isRequired,
     domElement: PropTypes.object.isRequired,
+    audioListener: PropTypes.object.isRequired,
   };
 
   getChildContext () {
@@ -18,6 +19,7 @@ export default class Renderer extends Base {
       setScene: ::this.setScene,
       getSize: ::this.obj.getSize,
       domElement: this.obj.domElement,
+      audioListener: this.audioListener,
     }
   }
   setCamera (camera) {
@@ -36,6 +38,8 @@ export default class Renderer extends Base {
   constructor (props, ...rest) {
     super(props, ...rest)
     this.animate = ::this.animate
+    this.audioListener = new THREE.AudioListener()
+
     this.obj = props.obj || new THREE.WebGLRenderer({
       antialias: true,
     })
