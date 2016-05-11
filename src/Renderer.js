@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import THREE from 'three'
+import Stats from 'stats.js'
 import Base from './Base'
 
 
@@ -39,6 +40,7 @@ export default class Renderer extends Base {
     super(props, ...rest)
     this.animate = ::this.animate
     this.audioListener = new THREE.AudioListener()
+    this.stats = new Stats()
 
     this.obj = props.obj || new THREE.WebGLRenderer({
       antialias: true,
@@ -50,6 +52,7 @@ export default class Renderer extends Base {
 
   componentDidMount () {
     this.refs.container.appendChild(this.obj.domElement) // fixme
+    this.refs.container.appendChild(this.stats.dom)
     this.animate()
   }
 
@@ -62,6 +65,7 @@ export default class Renderer extends Base {
   animate () {
     requestAnimationFrame(this.animate)
     this.obj.render(this.scene, this.camera)
+    this.stats.update()
   }
 
   render () {

@@ -30,6 +30,7 @@
     "react": "*",
     "react-addons-pure-render-mixin": "*",
     "react-dom": "*",
-    "three": "*"
+    "three": "^0.75.0",
+    "stats.js": "^0.16.0"
   }
 }

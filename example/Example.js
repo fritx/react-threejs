@@ -16,7 +16,6 @@ import ExMorphtargetsHorse from './ExMorphtargetsHorse'
 export default class Example extends Component {
 
   constructor (...args) {
-    console.log('Example construct')
     super(...args)
 
     this.rendererSize = {
@@ -29,9 +28,8 @@ export default class Example extends Component {
     return (<Renderer size={this.rendererSize}>
       <Scene>
         <FirstPersonControls position={{ z: 15 }}>
-          <Camera>
-            <AudioListener />
-          </Camera>
+          <AudioListener />
+          <Camera />
         </FirstPersonControls>
         <Light hex={0xefefff} intensity={1.5} position={{ x: 10, y: 10, z: 10 }}/>
         <Light hex={0xffefef} intensity={1.5} position={{ x: -10, y: -10, z: -10 }}/>
