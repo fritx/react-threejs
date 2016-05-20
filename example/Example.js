@@ -3,7 +3,9 @@ import React, { Component } from 'react'
 // import { Renderer, Camera, Scene } from '../lib'
 import {
   Renderer, Camera, Scene, Light,
-  AudioListener, FirstPersonControls,
+  AudioListener,
+  OrbitControls,
+  // FirstPersonControls,
 } from '../src'
 import ExMyCube from './ExMyCube'
 import ExGeometryCube from './ExGeometryCube'
@@ -27,10 +29,14 @@ export default class Example extends Component {
   render () {
     return (<Renderer size={this.rendererSize}>
       <Scene>
-        <FirstPersonControls position={{ z: 15 }}>
+        {/* <FirstPersonControls position={{ z: 15 }}>
           <AudioListener />
           <Camera />
-        </FirstPersonControls>
+        </FirstPersonControls> */}
+        <OrbitControls position={{ z: 30 }}>
+          <AudioListener />
+          <Camera />
+        </OrbitControls>
         <Light hex={0xefefff} intensity={1.5} position={{ x: 10, y: 10, z: 10 }}/>
         <Light hex={0xffefef} intensity={1.5} position={{ x: -10, y: -10, z: -10 }}/>
         <ExMyCube position={{ y: -5 }} />
