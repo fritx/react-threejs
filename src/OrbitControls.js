@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react'
 import THREE from 'three'
-import _FirstPersonControls from '../threex/controls/FirstPersonControls'
+import _OrbitControls from '../threex/controls/OrbitControls'
 import Object3D from './Object3D'
 
-export default class FirstPersonControls extends Object3D {
+export default class OrbitControls extends Object3D {
 
   static contextTypes = {
     ...Object3D.contextTypes,
@@ -20,18 +20,8 @@ export default class FirstPersonControls extends Object3D {
   componentDidMount (...args) {
     super.componentDidMount(...args)
     const { domElement } = this.context
-    const controls = this.controls =
-      new _FirstPersonControls(this.obj, domElement)
-    controls.movementSpeed = 20
-    controls.lookSpeed = 0.1
-    controls.noFly = true
-    controls.lookVertical = true
-
-    // hack: fixing controls.handleResize called before Renderer didMount
-    // - while offsetWidth/offsetHeight eq 0
-    // however, as a canvas, width/height just works
-    controls.viewHalfX = domElement.width / 2
-    controls.viewHalfY = domElement.height / 2
+    this.controls = new _OrbitControls(this.obj, domElement)
+    // this.controls.target.set(0, 0, 100)
 
     this.timer = new THREE.Clock()
     this.animate()
@@ -50,7 +40,10 @@ export default class FirstPersonControls extends Object3D {
     this.controls.update(this.timer.getDelta())
   }
 
+  // very weird, a PI-y needed for orbit controls
   render () {
-    return <div>{this.props.children}</div>
+    return (<Object3D rotation={{ y: Math.PI }}>
+      {this.props.children}
+    </Object3D>)
   }
 }

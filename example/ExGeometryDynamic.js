@@ -25,6 +25,7 @@ export default class ExGeometryDynamic extends Object3D {
     const material = new THREE.MeshBasicMaterial( { color: 0x0044ff, map: texture } );
 
     this.mesh = new THREE.Mesh( geometry, material );
+    this.mesh.name = 'Water'
   }
 
   componentDidMount (...args) {
@@ -35,7 +36,7 @@ export default class ExGeometryDynamic extends Object3D {
   animate () {
     requestAnimationFrame(this.animate)
 
-    const time = this.clock.getElapsedTime() * 10;
+    const time = this.clock.getElapsedTime() * 5;
     for ( var i = 0, l = this.geometry.vertices.length; i < l; i ++ ) {
       this.geometry.vertices[ i ].y = 10 * Math.sin( i / 5 + ( time + i ) / 7 );
     }

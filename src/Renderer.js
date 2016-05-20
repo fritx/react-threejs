@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import THREE from 'three'
+import Stats from 'stats.js'
 import Base from './Base'
 
 
@@ -10,6 +11,7 @@ export default class Renderer extends Base {
     setScene: PropTypes.func.isRequired,
     getSize: PropTypes.func.isRequired,
     domElement: PropTypes.object.isRequired,
+    audioListener: PropTypes.object.isRequired,
   };
 
   getChildContext () {
@@ -18,6 +20,7 @@ export default class Renderer extends Base {
       setScene: ::this.setScene,
       getSize: ::this.obj.getSize,
       domElement: this.obj.domElement,
+      audioListener: this.audioListener,
     }
   }
   setCamera (camera) {
@@ -36,15 +39,20 @@ export default class Renderer extends Base {
   constructor (props, ...rest) {
     super(props, ...rest)
     this.animate = ::this.animate
+    this.audioListener = new THREE.AudioListener()
+    this.stats = new Stats()
+
     this.obj = props.obj || new THREE.WebGLRenderer({
       antialias: true,
     })
+    this.obj.name = this.obj.name || this.constructor.name
     this.obj.setSize(props.size.width, props.size.height)
     this.obj.setClearColor(0x000000)
   }
 
   componentDidMount () {
     this.refs.container.appendChild(this.obj.domElement) // fixme
+    this.refs.container.appendChild(this.stats.dom)
     this.animate()
   }
 
@@ -57,6 +65,7 @@ export default class Renderer extends Base {
   animate () {
     requestAnimationFrame(this.animate)
     this.obj.render(this.scene, this.camera)
+    this.stats.update()
   }
 
   render () {

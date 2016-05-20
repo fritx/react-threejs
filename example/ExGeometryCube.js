@@ -1,7 +1,7 @@
 
 import React from 'react'
 import THREE from 'three'
-import { Mesh, Object3D } from '../src'
+import { Mesh, Object3D, PositionalAudio } from '../src'
 
 
 // http://threejs.org/examples/#webgl_geometry_cube
@@ -41,7 +41,9 @@ export default class ExGeometryCube extends Object3D {
     const { geometry, material } = this
     const { rotation } = this.state
     return (
-      <Mesh rotation={rotation} geometry={geometry} material={material} />
+      <Mesh rotation={rotation} geometry={geometry} material={material}>
+        <PositionalAudio url="Project_Utopia.ogg" />
+      </Mesh>
     )
   }
 }
