@@ -26,6 +26,23 @@ render () {
 }
 ```
 
+```jsx
+// setting FirstPersonControls, PositionalAudio & more
+render () {
+  return (<Renderer size={rendererSize}>
+    <Scene>
+      <FirstPersonControls>
+        <AudioListener />
+        <Camera />
+      </FirstPersonControls>
+      <Mesh rotation={rotation} geometry={geometry} material={material}>
+        <PositionalAudio url="Project_Utopia.ogg" />
+      </Mesh>
+    </Scene>
+  </Renderer>)
+}
+```
+
 
 [react]: https://github.com/facebook/react
 [threejs]: https://github.com/mrdoob/three.js

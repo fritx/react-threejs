@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import { PropTypes } from 'react'
 import THREE from 'three'
 import _FirstPersonControls from '../threex/controls/FirstPersonControls'
 import Object3D from './Object3D'
@@ -48,9 +48,5 @@ export default class FirstPersonControls extends Object3D {
   animate () {
     this.frame = requestAnimationFrame(this.animate)
     this.controls.update(this.timer.getDelta())
-  }
-
-  render () {
-    return <div>{this.props.children}</div>
   }
 }
