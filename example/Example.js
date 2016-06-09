@@ -11,6 +11,7 @@ import ExMyCube from './ExMyCube'
 import ExGeometryCube from './ExGeometryCube'
 import ExGeometryDynamic from './ExGeometryDynamic'
 import ExMorphtargetsHorse from './ExMorphtargetsHorse'
+import ExSpaceFighter from './ExSpaceFighter'
 
 
 // todo: THREE.FirstPersonControls
@@ -37,12 +38,13 @@ export default class Example extends Component {
           <AudioListener />
           <Camera />
         </OrbitControls>
-        <Light hex={0xefefff} intensity={1.5} position={{ x: 10, y: 10, z: 10 }}/>
-        <Light hex={0xffefef} intensity={1.5} position={{ x: -10, y: -10, z: -10 }}/>
+        <Light hex={0xefefff} intensity={2} position={{ x: 50, y: 50, z: 50 }}/>
+        <Light hex={0xffefef} intensity={2} position={{ x: -50, y: -50, z: -50 }}/>
         <ExMyCube position={{ y: -5 }} />
         <ExGeometryCube position={{ x: 7, y: 4 }} />
         <ExMorphtargetsHorse position={{ x: -7, y: 2 }} />
         <ExGeometryDynamic position={{ y: -200 }} />
+        <ExSpaceFighter position={{ y: 10 }} />
       </Scene>
     </Renderer>)
   }
