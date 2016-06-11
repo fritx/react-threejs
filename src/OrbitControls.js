@@ -31,7 +31,7 @@ export default class OrbitControls extends Object3D {
   componentWillUnmount (...args) {
     cancelAnimationFrame(this.frame)
     this.controls.dispose()
-    this.controls = null
+    // this.controls = null
     super.componentWillUnmount(...args)
   }
 

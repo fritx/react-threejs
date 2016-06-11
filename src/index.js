@@ -8,6 +8,7 @@ export { default as Mesh } from './Mesh'
 export { default as Light } from './Light'
 
 export { default as OrbitControls } from './OrbitControls'
+export { default as PointerLockControls } from './PointerLockControls'
 export { default as FirstPersonControls } from './FirstPersonControls'
 export { default as AudioListener } from './AudioListener'
 export { default as PositionalAudio } from './PositionalAudio'
