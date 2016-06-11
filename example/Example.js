@@ -21,20 +21,33 @@ export default class Example extends Component {
   constructor (...args) {
     super(...args)
 
-    this.rendererSize = {
-      width: window.innerWidth,
-      height: window.innerHeight,
+    this.state = {
+      rendererSize: {
+        width: window.innerWidth,
+        height: window.innerHeight,
+      },
     }
   }
 
+  componentDidMount () {
+    window.addEventListener('resize', () => {
+      this.setState({
+        rendererSize: {
+          width: window.innerWidth,
+          height: window.innerHeight,
+        },
+      })
+    })
+  }
+
   render () {
-    return (<Renderer size={this.rendererSize}>
+    return (<Renderer size={this.state.rendererSize}>
       <Scene>
         {/* <FirstPersonControls position={{ z: 15 }}>
           <AudioListener />
           <Camera />
         </FirstPersonControls> */}
-        <OrbitControls position={{ z: 30 }}>
+        <OrbitControls position={{ x: 9, y: 21, z: 20 }} rotation={{ x: 2, y: 0, z: 3 }}>
           <AudioListener />
           <Camera />
         </OrbitControls>

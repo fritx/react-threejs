@@ -56,6 +56,18 @@ export default class Renderer extends Base {
     this.animate()
   }
 
+  componentDidUpdate (prevProps) {
+    const { size } = this.props
+    if (size.width !== prevProps.size.width ||
+        size.height !== prevProps.size.height) { // dimension changed
+      this.obj.setSize(size.width, size.height)
+      if (this.camera) {
+        this.camera.aspect = size.width / size.height
+        this.camera.updateProjectionMatrix()
+      }
+    }
+  }
+
   componentWillUnmount () {
     // temperately not considering Renderer being unmounted
     // it is singleton & dominating

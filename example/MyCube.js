@@ -10,8 +10,6 @@ export default class MyCube extends Mesh {
   };
 
   constructor (props, ...rest) {
-    console.log('MyCube construct')
-
     // extend custom geometry & material
     // fixed: Warning: MyCube(...): When calling super() in `MyCube`,
     // make sure to pass up the same props that your component's constructor was passed.
