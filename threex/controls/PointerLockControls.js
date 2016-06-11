@@ -35,13 +35,12 @@ export default function PointerLockControls ( object ) {
 
   var PI_2 = Math.PI / 2;
 
-  this.lon = THREE.Math.radToDeg(
-    Math.atan2( object.rotation.z, object.rotation.x )
-  );
-  this.lat = THREE.Math.radToDeg(
-    Math.asin( object.rotation.y )
-  );
-  this.toLook = new THREE.Vector3()
+  this.lon = 0
+  this.lat = 0
+  this.toLook = new THREE.Vector3(0, 0, -1)
+  object.lookAt(
+    object.position.clone().sub(this.toLook.normalize())
+  )
 
   var onMouseMove = ( event ) => {
 
@@ -57,13 +56,13 @@ export default function PointerLockControls ( object ) {
     this.lon += dx * 0.1;
     this.lat += dy * 0.1; // * World.windowRatio
     this.lat = Math.max( - 89, Math.min( 89, this.lat ) );
-    this.phi = THREE.Math.degToRad( 90 - this.lat );
-    this.theta = THREE.Math.degToRad( this.lon );
+    var phi = THREE.Math.degToRad( 90 - this.lat );
+    var theta = -THREE.Math.degToRad( this.lon );
 
     this.toLook.set(
-      Math.sin( this.phi ) * Math.cos( this.theta ),
-      - Math.cos( this.phi ),
-      Math.sin( this.phi ) * Math.sin( this.theta )
+      - Math.sin( phi ) * Math.sin( theta ),
+      - Math.cos( phi ),
+      - Math.sin( phi ) * Math.cos( theta ),
     );
     object.lookAt(
       object.position.clone().sub(this.toLook.normalize())
@@ -130,6 +129,12 @@ export default function PointerLockControls ( object ) {
 
     }
 
+  };
+
+  this.dispose = function() {
+    document.removeEventListener( 'mousemove', onMouseMove, false );
+    document.removeEventListener( 'keydown', onKeyDown, false );
+    document.removeEventListener( 'keyup', onKeyUp, false );
   };
 
   document.addEventListener( 'mousemove', onMouseMove, false );
