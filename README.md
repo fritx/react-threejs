@@ -4,6 +4,8 @@ WIP: Simplest bindings between [React][react] & [Three.js][threejs]
 
 http://fritx.github.io/react-threejs/example/
 
+See also: [vue-threejs](https://github.com/fritx/vue-threejs)
+
 <img width="400" src="debugging.jpg" />
 
 
