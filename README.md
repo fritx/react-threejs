@@ -6,7 +6,7 @@ http://fritx.github.io/react-threejs/example/
 
 See also: [vue-threejs](https://github.com/fritx/vue-threejs)
 
-<img width="400" src="debugging.jpg" />
+<img width="400" src="https://github.com/fritx/react-threejs/raw/dev/debugging.jpg" />
 
 
 ```js
