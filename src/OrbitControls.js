@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import THREE from 'three'
+import * as THREE from 'three'
 import _OrbitControls from '../threex/controls/OrbitControls'
 import Object3D from './Object3D'
 

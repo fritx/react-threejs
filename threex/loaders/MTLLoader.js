@@ -1,5 +1,5 @@
 /* eslint-disable */
-import THREE from 'three'
+import * as THREE from 'three'
 
 /**
  * Loads a Wavefront .mtl file specifying materials
@@ -417,4 +417,9 @@ MTLLoader.MaterialCreator.prototype = {
 
 };
 
-THREE.EventDispatcher.prototype.apply( MTLLoader.prototype );
+// warn: THREE.EventDispatcher: .apply is deprecated,
+// just inherit or Object.assign the prototype to mix-in.
+// THREE.EventDispatcher.prototype.apply( MTLLoader.prototype );
+for (let k in THREE.EventDispatcher.prototype) {
+  MTLLoader.prototype[k] = THREE.EventDispatcher.prototype[k]
+}

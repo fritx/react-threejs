@@ -1,5 +1,5 @@
 /* eslint-disable */
-import THREE from 'three'
+import * as THREE from 'three'
 
 // https://github.com/fritx/spacewar
 // https://github.com/nkm/three-pointerlock

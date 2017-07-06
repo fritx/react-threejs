@@ -1,5 +1,5 @@
 import { PropTypes } from 'react'
-import THREE from 'three'
+import * as THREE from 'three'
 import _PointerLockControls from '../threex/controls/PointerLockControls'
 import Object3D from './Object3D'
 

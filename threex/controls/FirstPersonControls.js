@@ -1,5 +1,5 @@
 /* eslint-disable */
-import THREE from 'three'
+import * as THREE from 'three'
 
 // https://github.com/mrdoob/three.js/blob/master/examples%2Fjs%2Fcontrols%2FFirstPersonControls.js
 /**

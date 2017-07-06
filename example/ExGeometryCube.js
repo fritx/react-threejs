@@ -1,6 +1,6 @@
 
 import React from 'react'
-import THREE from 'three'
+import * as THREE from 'three'
 import { Mesh, Object3D, PositionalAudio } from '../src'
 
 

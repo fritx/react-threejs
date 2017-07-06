@@ -74,8 +74,8 @@ export default class Example extends Component {
             </PointerLockControls>)
           }
         }}
-        <Light hex={0xefefff} intensity={2} position={{ x: 50, y: 50, z: 50 }}/>
-        <Light hex={0xffefef} intensity={2} position={{ x: -50, y: -50, z: -50 }}/>
+        <Light hex={0xefefff} intensity={2} position={{ x: 50, y: 50, z: 50 }} />
+        <Light hex={0xffefef} intensity={2} position={{ x: -50, y: -50, z: -50 }} />
         <ExMyCube position={{ y: -5 }} />
         <ExGeometryCube position={{ x: 7, y: 4 }} />
         <ExMorphtargetsHorse position={{ x: -7, y: 2 }} />
