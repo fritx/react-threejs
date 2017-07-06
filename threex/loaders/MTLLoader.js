@@ -1,5 +1,5 @@
 /* eslint-disable */
-import THREE from 'three'
+import * as THREE from 'three'
 
 /**
  * Loads a Wavefront .mtl file specifying materials

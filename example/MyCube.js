@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import THREE from 'three'
+import * as THREE from 'three'
 import { Mesh } from '../src'
 
 

@@ -1,6 +1,6 @@
 
 import React from 'react'
-import THREE from 'three'
+import * as THREE from 'three'
 import MTLLoader from '../threex/loaders/MTLLoader'
 import OBJLoader from '../threex/loaders/OBJLoader'
 import { Object3D, Mesh } from '../src'
